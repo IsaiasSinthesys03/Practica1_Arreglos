@@ -1,9 +1,135 @@
-# Practica1_Arreglos
-# Informe Técnico y Funcional: API de Práctica de Arreglos
+# 🕷️ Spider-Verse Matrix Lab | API de Práctica de Arreglos
 
-##Instrucciones de como arancar el back-end##
-**Abrir terminal**
-** npm run dev **
+## 🚀 Instrucciones de Instalación y Configuración
+
+### **Prerrequisitos**
+- ✅ **Node.js** (versión 14 o superior) - [Descargar aquí](https://nodejs.org/)
+- ✅ **npm** (viene incluido con Node.js)
+- ✅ **Git** - [Descargar aquí](https://git-scm.com/)
+
+### **📥 Paso 1: Descargar el Proyecto**
+
+#### **Opción A: Clonar desde GitHub (Recomendado)**
+```bash
+git clone https://github.com/IsaiasSinthesys03/Practica1_Arreglos.git
+cd Practica1_Arreglos
+```
+
+#### **Opción B: Descargar ZIP**
+1. Ve a [https://github.com/IsaiasSinthesys03/Practica1_Arreglos](https://github.com/IsaiasSinthesys03/Practica1_Arreglos)
+2. Haz clic en el botón verde **"Code"**
+3. Selecciona **"Download ZIP"**
+4. Extrae el archivo en tu carpeta de trabajo
+
+### **📦 Paso 2: Instalar Dependencias**
+
+Abre la terminal en la carpeta del proyecto y ejecuta:
+
+```bash
+npm install
+```
+
+**¿Qué hace este comando?**
+- Descarga e instala todas las dependencias necesarias:
+  - `express` - Framework web para Node.js
+  - `express-validator` - Validación de datos
+  - `swagger-jsdoc` - Documentación automática
+  - `swagger-ui-express` - Interfaz de documentación
+  - `dotenv` - Variables de entorno
+  - `nodemon` - Reinicio automático del servidor (desarrollo)
+
+### **⚙️ Paso 3: Configurar Variables de Entorno (Opcional)**
+
+Crea un archivo `.env` en la raíz del proyecto (opcional):
+```bash
+PORT=3000
+NODE_ENV=development
+```
+
+### **🚀 Paso 4: Ejecutar el Proyecto**
+
+#### **Para Desarrollo (Recomendado):**
+```bash
+npm run dev
+```
+
+#### **Para Producción:**
+```bash
+npm start
+```
+
+### **🌐 Paso 5: Acceder a la Aplicación**
+
+Una vez ejecutado, podrás acceder a:
+
+- **🕷️ Frontend (Spider-Verse Matrix Lab):** [http://localhost:3000](http://localhost:3000)
+- **📚 Documentación de la API:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- **🔗 API Base URL:** [http://localhost:3000/api/v1](http://localhost:3000/api/v1)
+
+### **🛠️ Comandos Disponibles**
+
+```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar en modo desarrollo (con auto-reload)
+npm run dev
+
+# Ejecutar en modo producción
+npm start
+
+# Ver información del proyecto
+npm info
+```
+
+### **❓ Solución de Problemas Comunes**
+
+#### **Error: "npm no se reconoce como comando"**
+- Instala Node.js desde [nodejs.org](https://nodejs.org/)
+- Reinicia la terminal después de la instalación
+
+#### **Error: "Puerto 3000 ya está en uso"**
+- Cambia el puerto en el archivo `.env`:
+  ```
+  PORT=3001
+  ```
+- O mata el proceso que usa el puerto 3000
+
+#### **Error: "Módulo no encontrado"**
+- Ejecuta `npm install` nuevamente
+- Verifica que estés en la carpeta correcta del proyecto
+
+### **📁 Estructura del Proyecto**
+
+```
+Practica1_Arreglos/
+├── src/                    # Backend (API Node.js)
+│   ├── api/               # Controladores y rutas
+│   ├── core/              # Lógica de negocio
+│   ├── middleware/         # Middleware personalizado
+│   └── config/            # Configuración
+├── index.html             # Frontend principal
+├── styles.css             # Estilos CSS
+├── app.js                 # JavaScript del frontend
+├── package.json           # Dependencias del proyecto
+└── README.md              # Este archivo
+```
+
+### **🎯 ¿Qué Puedes Hacer?**
+
+1. **🔄 Rotar matrices** 90 grados
+2. **🌀 Recorrer matrices** en espiral
+3. **✨ Verificar cuadrados mágicos**
+4. **🔢 Contar ceros** en matrices
+5. **⚡ Realizar operaciones** básicas entre matrices
+6. **🎯 Generar matrices identidad**
+7. **🎲 Analizar matrices aleatorias**
+8. **💰 Analizar datos de ventas**
+9. **📊 Analizar calificaciones estudiantiles**
+
+---
+
+## 📋 Información Técnica del Proyecto
 
 ## 1. Resumen General y Arquitectura
 
