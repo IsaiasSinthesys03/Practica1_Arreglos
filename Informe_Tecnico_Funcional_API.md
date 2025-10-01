@@ -1,5 +1,9 @@
 # Informe Técnico y Funcional: API de Práctica de Arreglos
 
+##Instrucciones de como arancar el back-end##
+**Abrir terminal**
+** npm run dev **
+
 ## 1. Resumen General y Arquitectura
 
 **Propósito del Proyecto:** Esta API está diseñada para resolver ejercicios prácticos de manipulación de arreglos y matrices, proporcionando operaciones matemáticas avanzadas, análisis estadísticos y algoritmos de procesamiento de datos estructurados.
