@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider-Verse Matrix Lab | API de Práctica de Arreglos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo con patrón de telaraña -->
+    <div class="spider-background"></div>
+    
+    <!-- Header con logo Spider-Man -->
+    <header class="main-header">
+        <div class="logo-container">
+            <div class="spider-logo">
+                <svg viewBox="0 0 100 100" class="spider-svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#E62129" stroke-width="2"/>
+                    <path d="M50 20 L50 80 M20 50 L80 50 M35 35 L65 65 M65 35 L35 65" stroke="#E62129" stroke-width="3" fill="none"/>
+                    <circle cx="50" cy="50" r="8" fill="#E62129"/>
+                </svg>
+            </div>
+            <h1>Spider-Verse Matrix Lab</h1>
+        </div>
+    </header>
+
+    <!-- Navegación lateral -->
+    <nav class="sidebar">
+        <div class="nav-header">
+            <div class="spider-icon">
+                <svg viewBox="0 0 50 50" class="mini-spider">
+                    <circle cx="25" cy="25" r="20" fill="none" stroke="#E62129" stroke-width="1.5"/>
+                    <path d="M25 15 L25 35 M15 25 L35 25 M20 20 L30 30 M30 20 L20 30" stroke="#E62129" stroke-width="2" fill="none"/>
+                    <circle cx="25" cy="25" r="4" fill="#E62129"/>
+                </svg>
+            </div>
+            <h2>Ejercicios de Matrices</h2>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item" data-exercise="rotate">
+                <span class="nav-icon">🔄</span>
+                <span class="nav-text">Rotación 90°</span>
+            </li>
+            <li class="nav-item" data-exercise="spiral">
+                <span class="nav-icon">🌀</span>
+                <span class="nav-text">Recorrido Espiral</span>
+            </li>
+            <li class="nav-item" data-exercise="magic">
+                <span class="nav-icon">✨</span>
+                <span class="nav-text">Cuadrado Mágico</span>
+            </li>
+            <li class="nav-item" data-exercise="zeros">
+                <span class="nav-icon">🔢</span>
+                <span class="nav-text">Conteo de Ceros</span>
+            </li>
+            <li class="nav-item" data-exercise="operations">
+                <span class="nav-icon">⚡</span>
+                <span class="nav-text">Operaciones Básicas</span>
+            </li>
+            <li class="nav-item" data-exercise="identity">
+                <span class="nav-icon">🎯</span>
+                <span class="nav-text">Matriz Identidad</span>
+            </li>
+            <li class="nav-item" data-exercise="random">
+                <span class="nav-icon">🎲</span>
+                <span class="nav-text">Análisis Aleatorio</span>
+            </li>
+            <li class="nav-item" data-exercise="sales">
+                <span class="nav-icon">💰</span>
+                <span class="nav-text">Análisis de Ventas</span>
+            </li>
+            <li class="nav-item" data-exercise="grades">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Análisis de Calificaciones</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Vista de bienvenida -->
+        <div id="welcome" class="view active">
+            <div class="welcome-container">
+                <div class="welcome-spider">
+                    <svg viewBox="0 0 200 200" class="welcome-spider-svg">
+                        <defs>
+                            <radialGradient id="spiderGradient" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#E62129;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0077B6;stop-opacity:0.8" />
+                            </radialGradient>
+                        </defs>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="url(#spiderGradient)" stroke-width="3"/>
+                        <path d="M100 40 L100 160 M40 100 L160 100 M70 70 L130 130 M130 70 L70 130" stroke="url(#spiderGradient)" stroke-width="4" fill="none"/>
+                        <circle cx="100" cy="100" r="15" fill="url(#spiderGradient)"/>
+                    </svg>
+                </div>
+                <h1 class="main-title">¡Bienvenido al Spider-Verse Matrix Lab!</h1>
+                <p class="subtitle">Explora el poder de las matrices con la tecnología más avanzada de Industrias Stark</p>
+                <div id="exercise-grid" class="exercise-grid"></div>
+            </div>
+        </div>
+
+        <!-- Vista de Rotación -->
+        <div id="rotate" class="view">
+            <div class="exercise-container">
+                <div class="exercise-header">
+                    <button class="back-btn" onclick="app.showView('welcome')">
+                        <span>←</span> Volver al Inicio
+                    </button>
+                    <h2 class="exercise-title">🔄 Rotación de Matriz 90°</h2>
+                </div>
+                <p class="exercise-description">Rota una matriz cuadrada 90 grados en sentido horario</p>
+                
+                <div class="matrix-input-section">
+                    <h3>Matriz de Entrada</h3>
+                    <div class="matrix-controls">
+                        <div class="size-controls">
+                            <label>Tamaño:</label>
+                            <input type="number" id="rotate-size" min="2" max="10" value="3" class="size-input">
+                            <button id="generate-rotate-matrix" class="generate-btn">Generar Grid</button>
+                        </div>
+                    </div>
+                    <div id="rotate-input-grid" class="matrix-grid"></div>
+                </div>
+
+                <div class="action-section">
+                    <button id="execute-rotate" class="execute-btn">
+                        <span class="btn-text">EJECUTAR ROTACIÓN</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="rotate-result" class="result-section" style="display: none;">
+                    <h3>Matriz Rotada</h3>
+                    <div id="rotate-output-grid" class="matrix-grid result-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Espiral -->
+        <div id="spiral" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">🌀 Recorrido en Espiral</h2>
+                <p class="exercise-description">Recorre una matriz en orden espiral desde el exterior hacia el interior</p>
+                
+                <div class="matrix-input-section">
+                    <h3>Matriz de Entrada</h3>
+                    <div class="matrix-controls">
+                        <div class="size-controls">
+                            <label>Filas:</label>
+                            <input type="number" id="spiral-rows" min="2" max="8" value="4" class="size-input">
+                            <label>Columnas:</label>
+                            <input type="number" id="spiral-cols" min="2" max="8" value="4" class="size-input">
+                            <button id="generate-spiral-matrix" class="generate-btn">Generar Grid</button>
+                        </div>
+                    </div>
+                    <div id="spiral-input-grid" class="matrix-grid"></div>
+                </div>
+
+                <div class="action-section">
+                    <button id="execute-spiral" class="execute-btn">
+                        <span class="btn-text">EJECUTAR ESPIRAL</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="spiral-result" class="result-section" style="display: none;">
+                    <h3>Recorrido Espiral</h3>
+                    <div id="spiral-animation-container" class="spiral-animation">
+                        <div id="spiral-input-display" class="matrix-grid"></div>
+                        <div id="spiral-path" class="spiral-path"></div>
+                    </div>
+                    <div id="spiral-output" class="spiral-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Cuadrado Mágico -->
+        <div id="magic" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">✨ Cuadrado Mágico</h2>
+                <p class="exercise-description">Verifica si una matriz es un cuadrado mágico</p>
+                
+                <div class="matrix-input-section">
+                    <h3>Matriz de Entrada</h3>
+                    <div class="matrix-controls">
+                        <div class="size-controls">
+                            <label>Tamaño:</label>
+                            <input type="number" id="magic-size" min="3" max="6" value="3" class="size-input">
+                            <button id="generate-magic-matrix" class="generate-btn">Generar Grid</button>
+                        </div>
+                    </div>
+                    <div id="magic-input-grid" class="matrix-grid"></div>
+                </div>
+
+                <div class="action-section">
+                    <button id="execute-magic" class="execute-btn">
+                        <span class="btn-text">VERIFICAR CUADRADO MÁGICO</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="magic-result" class="result-section" style="display: none;">
+                    <div id="magic-output" class="magic-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Conteo de Ceros -->
+        <div id="zeros" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">🔢 Conteo de Ceros</h2>
+                <p class="exercise-description">Cuenta los ceros en cada fila de una matriz</p>
+                
+                <div class="matrix-input-section">
+                    <h3>Matriz de Entrada</h3>
+                    <div class="matrix-controls">
+                        <div class="size-controls">
+                            <label>Filas:</label>
+                            <input type="number" id="zeros-rows" min="2" max="6" value="3" class="size-input">
+                            <label>Columnas:</label>
+                            <input type="number" id="zeros-cols" min="2" max="6" value="3" class="size-input">
+                            <button id="generate-zeros-matrix" class="generate-btn">Generar Grid</button>
+                        </div>
+                    </div>
+                    <div id="zeros-input-grid" class="matrix-grid"></div>
+                </div>
+
+                <div class="action-section">
+                    <button id="execute-zeros" class="execute-btn">
+                        <span class="btn-text">CONTAR CEROS</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="zeros-result" class="result-section" style="display: none;">
+                    <h3>Conteo por Fila</h3>
+                    <div id="zeros-output" class="zeros-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Operaciones Básicas -->
+        <div id="operations" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">⚡ Operaciones Básicas</h2>
+                <p class="exercise-description">Realiza suma, resta, multiplicación y división entre dos matrices 2x2</p>
+                
+                <div class="operations-container">
+                    <div class="matrix-input-section">
+                        <h3>Matriz A</h3>
+                        <div id="matrix-a-grid" class="matrix-grid operations-grid"></div>
+                    </div>
+                    
+                    <div class="operations-symbols">
+                        <div class="operation-symbol">+</div>
+                        <div class="operation-symbol">-</div>
+                        <div class="operation-symbol">×</div>
+                        <div class="operation-symbol">÷</div>
+                    </div>
+                    
+                    <div class="matrix-input-section">
+                        <h3>Matriz B</h3>
+                        <div id="matrix-b-grid" class="matrix-grid operations-grid"></div>
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <button id="execute-operations" class="execute-btn">
+                        <span class="btn-text">EJECUTAR OPERACIONES</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="operations-result" class="result-section" style="display: none;">
+                    <h3>Resultados</h3>
+                    <div id="operations-output" class="operations-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Matriz Identidad -->
+        <div id="identity" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">🎯 Matriz Identidad</h2>
+                <p class="exercise-description">Genera una matriz identidad de tamaño especificado</p>
+                
+                <div class="matrix-input-section">
+                    <h3>Configuración</h3>
+                    <div class="matrix-controls">
+                        <div class="size-controls">
+                            <label>Tamaño:</label>
+                            <input type="number" id="identity-size" min="2" max="8" value="3" class="size-input">
+                            <button id="execute-identity" class="execute-btn">
+                                <span class="btn-text">GENERAR MATRIZ IDENTIDAD</span>
+                                <div class="spinner-loader" style="display: none;">
+                                    <div class="spider-spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="identity-result" class="result-section" style="display: none;">
+                    <h3>Matriz Identidad</h3>
+                    <div id="identity-output-grid" class="matrix-grid result-grid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Análisis Aleatorio -->
+        <div id="random" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">🎲 Análisis de Matriz Aleatoria</h2>
+                <p class="exercise-description">Genera una matriz aleatoria 5x10 y analiza sumas y promedios</p>
+                
+                <div class="action-section">
+                    <button id="execute-random" class="execute-btn">
+                        <span class="btn-text">GENERAR Y ANALIZAR</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="random-result" class="result-section" style="display: none;">
+                    <h3>Análisis Completo</h3>
+                    <div id="random-output" class="random-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Análisis de Ventas -->
+        <div id="sales" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">💰 Análisis de Ventas</h2>
+                <p class="exercise-description">Analiza estadísticas de ventas mensuales</p>
+                
+                <div class="action-section">
+                    <button id="execute-sales" class="execute-btn">
+                        <span class="btn-text">INICIAR ANÁLISIS DE VENTAS</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="sales-result" class="result-section" style="display: none;">
+                    <h3>Estadísticas de Ventas</h3>
+                    <div id="sales-output" class="sales-output"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista de Análisis de Calificaciones -->
+        <div id="grades" class="view">
+            <div class="exercise-container">
+                <h2 class="exercise-title">📊 Análisis de Calificaciones</h2>
+                <p class="exercise-description">Analiza estadísticas de calificaciones estudiantiles</p>
+                
+                <div class="action-section">
+                    <button id="execute-grades" class="execute-btn">
+                        <span class="btn-text">INICIAR ANÁLISIS DE CALIFICACIONES</span>
+                        <div class="spinner-loader" style="display: none;">
+                            <div class="spider-spinner"></div>
+                        </div>
+                    </button>
+                </div>
+
+                <div id="grades-result" class="result-section" style="display: none;">
+                    <h3>Estadísticas de Calificaciones</h3>
+                    <div id="grades-output" class="grades-output"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Resultado -->
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Resultado</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-result" class="modal-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Error -->
+    <div id="error-modal" class="modal">
+        <div class="modal-content error-modal">
+            <div class="modal-header">
+                <h3 id="error-title">Error</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="error-result" class="error-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
